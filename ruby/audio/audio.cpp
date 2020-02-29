@@ -119,6 +119,7 @@ auto Audio::level() -> double {
 }
 
 auto Audio::output(const double samples[]) -> void {
+  if(!instance->ready()) return;
   if(!instance->dynamic) return instance->output(samples);
 
   auto maxDelta = 0.005;
